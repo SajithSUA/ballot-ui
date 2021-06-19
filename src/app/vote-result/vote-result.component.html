@@ -1,0 +1,14 @@
+<h2>Vote Result</h2>
+
+<ul class="heroes">
+  <h3>Question : {{voteResult.question}}</h3>
+  <li *ngFor="let result of voteResult.choiceResults">
+    <a>
+      <span class="badge">
+        {{result.votes}}
+      </span>
+
+      {{result.choice}}
+    </a>
+  </li>
+</ul>

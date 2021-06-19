@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VoteComponent } from './vote/vote.component';
 import {FormsModule} from "@angular/forms";
+import { VoteResultComponent } from './vote-result/vote-result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VoteComponent
+    VoteComponent,
+    VoteResultComponent
   ],
   imports: [
     BrowserModule,

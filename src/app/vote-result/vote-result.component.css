@@ -3,11 +3,11 @@
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 40em;
+  width: 60em;
 }
 
 .heroes h3 {
-  width: 60em;
+  width: 100%;
   background-color: #dbdbdb;
   margin: .5em;
   padding: .3em 0;
