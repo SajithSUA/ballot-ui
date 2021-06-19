@@ -1,0 +1,14 @@
+<h2>My Votes</h2>
+
+
+<ul class="heroes">
+  <h3>Question : {{pollView.question}}</h3>
+  <li *ngFor="let choice of pollView.choices">
+
+    <input type="radio" id="{{choice.choice}}" name="choice" [checked]="choice.choice === selected"
+           (change)="onItemChange(choice.choice)">
+    <label>{{choice.choice}}</label>
+  </li>
+
+  <button class="button button2" (click)="voteClick()">Submit</button>
+</ul>
