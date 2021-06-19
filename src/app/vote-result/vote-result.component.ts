@@ -10,10 +10,16 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class VoteResultComponent implements OnInit {
 
-  voteResult : PollResult = mockResult;
+  voteResult : PollResult | undefined;
   constructor(private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
+    this.getResult()
+  }
+
+  getResult() : void
+  {
+    this.voteResult = mockResult;
   }
 
 }

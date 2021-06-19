@@ -1,7 +1,9 @@
 <h2>Vote Result</h2>
 
+<div *ngIf="voteResult">
 <ul class="heroes">
   <h3>Question : {{voteResult.question}}</h3>
+  <br>
   <li *ngFor="let result of voteResult.choiceResults">
     <a>
       <span class="badge">
@@ -12,3 +14,4 @@
     </a>
   </li>
 </ul>
+</div>

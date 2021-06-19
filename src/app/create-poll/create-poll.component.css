@@ -1,0 +1,61 @@
+/* HeroDetailComponent's private CSS styles */
+label {
+  color: #435960;
+  font-weight: bold;
+}
+input {
+  font-size: 1em;
+  padding: .5rem;
+  border-radius: 4px;
+  width: 30em;
+}
+
+.badge {
+  font-size: 1em;
+  padding: .5rem;
+  border-radius: 4px;
+  color: white;
+  background-color: #79c27a;
+  width: 5em;
+}
+
+.badge:hover {
+  color: white;
+  background-color: #1bc241;
+}
+
+.heroes li {
+  position: relative;
+  cursor: pointer;
+}
+
+.heroes a {
+  color: #333;
+  text-decoration: none;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+  display: block;
+  width: 20em;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: white;
+  background-color: #1a76c2;
+}
+
+.button2 {background-color: #389bba;} /* Blue */

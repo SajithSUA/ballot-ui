@@ -25,10 +25,6 @@
   cursor: pointer;
 }
 
-.heroes li:hover {
-  left: .1em;
-}
-
 .heroes a {
   color: #333;
   text-decoration: none;
@@ -39,16 +35,6 @@
   border-radius: 4px;
   display: block;
   width: 20em;
-}
-
-.heroes a:hover {
-  color: #2c3a41;
-  background-color: #e6e6e6;
-}
-
-.heroes a:active {
-  background-color: #525252;
-  color: #fafafa;
 }
 
 .heroes .normal{
