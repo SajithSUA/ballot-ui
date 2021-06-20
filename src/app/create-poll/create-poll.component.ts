@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
+import {ServerService} from "../server.service";
+import {Voter} from "../../perameters/voter";
 
 @Component({
   selector: 'app-create-poll',
@@ -12,8 +14,13 @@ export class CreatePollComponent implements OnInit {
   pollForm: FormGroup;
   buttonEnable: boolean = false;
   canSubmit: boolean = false;
+  voter: Voter = {
+    id: '',
+    alias: '',
+    email: ''
+  };
 
-  constructor(private fb: FormBuilder, private router: Router ) {
+  constructor(private fb: FormBuilder, private router: Router, private serverService: ServerService) {
     this.pollForm = this.fb.group({
       question: '',
       choices: this.fb.array([]),
@@ -50,15 +57,23 @@ export class CreatePollComponent implements OnInit {
         break;
       }
     }
-    if(this.canSubmit)
-    {
+    /*if (this.canSubmit) {
       console.log(this.pollForm.value.question.length > 0);
       this.router.navigate(['/vote']);
-    }
+    }*/
+    this.getVoter();
 
   }
 
   nameChange(): void {
     this.buttonEnable = this.pollForm.value.question.length > 0;
+  }
+
+  getVoter(): void {
+    console.log(this.voter);
+
+    this.serverService.getVoter().subscribe(voter => this.voter = voter);
+
+    console.log(this.voter);
   }
 }

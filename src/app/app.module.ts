@@ -7,6 +7,7 @@ import { VoteComponent } from './vote/vote.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { VoteResultComponent } from './vote-result/vote-result.component';
 import { CreatePollComponent } from './create-poll/create-poll.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CreatePollComponent } from './create-poll/create-poll.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
