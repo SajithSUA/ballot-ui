@@ -1,4 +1,4 @@
-import {PollResult} from "../../perameters/pool-result";
+import {PollResult} from "../../model/pool-result";
 
 export const mockResult: PollResult = {
   id: "testId",

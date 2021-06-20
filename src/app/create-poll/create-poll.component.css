@@ -53,9 +53,12 @@ input {
   cursor: pointer;
 }
 
-.button:hover {
+
+.button2 {background-color: #389bba;} /* Blue */
+.button3 {background-color: #41ba47;} /* Green */
+.button4 {background-color: #ba3a32;} /* Red */
+
+.button2:hover {
   color: white;
   background-color: #1a76c2;
 }
-
-.button2 {background-color: #389bba;} /* Blue */

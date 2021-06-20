@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {mockPollView} from "../mock-data/mock-vote";
-import {PollView} from "../../perameters/poll-view";
+import {PollView} from "../../model/poll-view";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ServerService} from "../../services/server.service";
 
 @Component({
   selector: 'app-vote',
@@ -13,12 +15,13 @@ export class VoteComponent implements OnInit {
 
   selected : string;
 
-  constructor() {
+  constructor(private route: ActivatedRoute,
+              private serverService: ServerService) {
     this.selected = this.pollView.choices[0].choice;
   }
 
   ngOnInit(): void {
-    console.log()
+    this.getPollDetail();
   }
 
   voteClick(): void {
@@ -28,4 +31,12 @@ export class VoteComponent implements OnInit {
   onItemChange(id: String): void{
     this.selected = JSON.stringify(id);
   }
+
+  getPollDetail(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if(id !== null)
+    {this.serverService.getPoolDetail(id).subscribe(view => this.pollView = view);}
+
+  }
+
 }

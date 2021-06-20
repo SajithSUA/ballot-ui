@@ -1,4 +1,4 @@
-import {PollView} from "../../perameters/poll-view";
+import {PollView} from "../../model/poll-view";
 
 export const mockPollView: PollView = {
   id: "testId",

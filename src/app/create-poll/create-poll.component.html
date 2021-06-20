@@ -9,11 +9,16 @@
       <input type="text" (change)="nameChange()" id="question" name="question" formControlName="question" class="form-control">
     </p>
 
+    <p>
+      <label for="question">OwnerId:</label>
+      <input type="text" id="owner" name="owner" formControlName="owner" class="form-control">
+    </p>
+
     <table class="table table-bordered" formArrayName="choices">
         <tr>
           <th colspan="2">Add Multiple Choices:</th>
           <th width="150px">
-            <button [disabled]="!buttonEnable" type="button" (click)="addChoice()" class="btn btn-primary">Add More</button>
+            <button [disabled]="!buttonEnable" type="button" (click)="addChoice()" class="button button3">Add More</button>
           </th>
         </tr>
       <tr *ngFor="let choice of choices().controls; let i=index" [formGroupName]="i">
@@ -22,15 +27,14 @@
           <input type="text" formControlName="choice" class="form-control">
         </td>
         <td>
-          <button (click)="removeChoice(i)" class="btn btn-danger">Remove</button>
+          <button (click)="removeChoice(i)" class="button button4">Remove</button>
         </td>
       </tr>
     </table>
 
-    <button [disabled]="!buttonEnable" type="submit" class="btn btn-success">Submit</button>
+    <br>
+    <button [disabled]="!buttonEnable" type="submit" class="button button2">Submit</button>
 
   </form>
 
-  <br/>
-  {{this.pollForm.value | json}}
 </div>

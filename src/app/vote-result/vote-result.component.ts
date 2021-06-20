@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PollResult} from "../../perameters/pool-result";
+import {PollResult} from "../../model/pool-result";
 import {mockResult} from "../mock-data/mock-result";
 import {ActivatedRoute} from "@angular/router";
 

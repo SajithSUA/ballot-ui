@@ -6,9 +6,9 @@ import {VoteComponent} from "./vote/vote.component";
 import {CreatePollComponent} from "./create-poll/create-poll.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/vote', pathMatch: 'full' },
+  { path: '', redirectTo: '/createPoll', pathMatch: 'full' },
   { path: 'result', component: VoteResultComponent },
-  { path: 'vote', component: VoteComponent },
+  { path: 'vote/:id', component: VoteComponent },
   { path: 'createPoll', component: CreatePollComponent }
 ];
 

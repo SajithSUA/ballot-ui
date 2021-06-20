@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {ServerService} from "../server.service";
-import {Voter} from "../../perameters/voter";
+import {ServerService} from "../../services/server.service";
+import {Poll} from "../../model/poll";
+import {PollMapper} from "../../mapers/poll-mapper";
 
 @Component({
   selector: 'app-create-poll',
@@ -11,18 +12,18 @@ import {Voter} from "../../perameters/voter";
 })
 export class CreatePollComponent implements OnInit {
 
+  pollId: string = '';
   pollForm: FormGroup;
   buttonEnable: boolean = false;
   canSubmit: boolean = false;
-  voter: Voter = {
-    id: '',
-    alias: '',
-    email: ''
-  };
 
-  constructor(private fb: FormBuilder, private router: Router, private serverService: ServerService) {
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private serverService: ServerService,
+              private pollMapper: PollMapper) {
     this.pollForm = this.fb.group({
       question: '',
+      owner: '',
       choices: this.fb.array([]),
     });
   }
@@ -50,18 +51,16 @@ export class CreatePollComponent implements OnInit {
 
   onSubmit() {
     //If have atleast one choices
-    for (var choice of this.pollForm.value.choices) {
+    for (let choice of this.pollForm.value.choices) {
       this.canSubmit = true;
       if (choice.choice.length < 1) {
         this.canSubmit = false;
         break;
       }
     }
-    /*if (this.canSubmit) {
-      console.log(this.pollForm.value.question.length > 0);
-      this.router.navigate(['/vote']);
-    }*/
-    this.getVoter();
+    if (this.canSubmit) {
+      this.createPoll(this.pollMapper.mapPoll(this.pollForm));
+    }
 
   }
 
@@ -69,11 +68,14 @@ export class CreatePollComponent implements OnInit {
     this.buttonEnable = this.pollForm.value.question.length > 0;
   }
 
-  getVoter(): void {
-    console.log(this.voter);
+  createPoll(poll: Poll): void {
+    this.serverService.createPoll(poll).subscribe(id => {
+      this.pollId = id.result
+    });
 
-    this.serverService.getVoter().subscribe(voter => this.voter = voter);
-
-    console.log(this.voter);
+    //This code have problem:- poolId not update correctly (pollId is always on point behind the last update)
+    if (this.pollId.length > 0) {
+      this.router.navigate(['/vote/', this.pollId]);
+    }
   }
 }
